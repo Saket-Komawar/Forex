@@ -1,0 +1,43 @@
+from django.shortcuts import render, redirect
+from django.conf import settings
+from django.http import HttpResponse
+from django.core.files.storage import FileSystemStorage
+from .forms import postQuery
+
+# Create your views here.
+
+
+def test(request):
+	if request.method == "POST" and not request.FILES:
+		form = postQuery(request.POST)
+		if form.is_valid():
+			print form['query'].value()
+		return HttpResponse("Query Submitted")
+	elif request.method == 'POST' and request.FILES['myfile']:
+		myfile = request.FILES['myfile']
+		fs = FileSystemStorage()
+		filename = fs.save(myfile.name, myfile)
+		uploaded_file_url = fs.url(filename)
+		return HttpResponse("File Uploaded")
+	else:
+		form = postQuery()
+		return render(request, "index.html", {'form' : form})
+
+
+def dumpFile(filePath):
+	filePath = settings.BASE_DIR + filePath
+	file = open(filePath, "r+")
+	for line in file:
+		company = line[:len(line) - 1]
+		search.objects.create(query = company, score = 0, date = timezone.now())
+	return
+
+def isIEC(company):
+	objLi = IEC.objects.all()
+	flag = 0
+	for obj in objLi:
+		dis = distance.get_jaro_distance(company, obj.name, winkler = True, scaling = 0.1)
+		if(dis >= 0.85):
+			flag = 1
+			break
+ 	return flag

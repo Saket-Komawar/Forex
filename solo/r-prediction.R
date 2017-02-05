@@ -1,0 +1,7 @@
+library(rpart)
+options(echo=TRUE)
+args <- commandArgs(TRUE)
+test = data.frame(V1 = as.numeric(args[1]), V2 = as.numeric(args[2]), V3 = as.numeric(args[3]), V4 = as.numeric(args[4]), V5 = as.numeric(args[5]), V6 = as.numeric(args[6]))
+model = readRDS(file = './solo/r-model.rds')
+result = predict(model, test)
+print (result)

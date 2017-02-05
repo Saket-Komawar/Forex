@@ -1,0 +1,32 @@
+#!/usr/bin/python
+from sklearn.tree import DecisionTreeClassifier
+import pandas as pd
+import numpy as np
+from sklearn.cross_validation import  cross_val_score
+import cPickle
+import sys
+
+def get_prediction(filename, path):
+
+    colnames = ['countryCount', 'cityCount', 'importCount', 'exportCount', 'keywordCount', 'iec', 'target']
+    test = pd.read_csv(filename, header = None, names = colnames)
+    test = test.replace(np.nan, 0, regex = True)
+    test = test.drop(['target'], axis = 1)
+    #target = test['target']
+    #test = test.drop(['target'], axis = 1)
+    #clf = DecisionTreeClassifier()
+
+
+    sys.setrecursionlimit(20000)
+    with open('./solo/sklearn.model.pkl', 'rb') as fid:
+        clf = cPickle.load(fid)
+
+    scores = clf.predict_proba(test)
+    pred = []
+    for elem in scores:
+        pred.append(elem[1])
+    print pred
+    return pred
+
+if __name__ == '__main__':
+    get_prediction('/home/ashish/codes/axis-bank/demo.test', None)

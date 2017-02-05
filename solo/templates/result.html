@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load i18n widget_tweaks %}
+<html lang="en">
+
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Innovation Hack</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Theme CSS -->
+    <link href="{% static 'css/agency.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/hello.css' %}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-inverse">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar page-scroll" href="#page-top" style="font-size: 20px; text-decoration: none;"><b>INNOVATION HACK</b></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <form  action="{% url 'test' %}">
+                            <button class="btn btn-info btn-lg" autofocus="autofocus" type="submit" style="background-color: #ffd11a; border-color: #ffd11a; margin-top: 15px;">
+                                <span class="glyphicon glyphicon-home" style="font-size: 35px; color: white;"></span>
+                            </button>
+                        </form>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+<!--     <header >
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Welcome to Forex Predictor</div>
+                <br>
+                <div class="container" >
+                <div id="custom-search-input" >
+                    <form method="POST" class="post-form" >{% csrf_token %}
+                      <div class="input-group col-md-12" >
+                          {{ form.query | add_class:"form-control input-lg" | attr:"placeholder:Enter the Company Name" | attr:"border:0" | attr:"box-shadow:none" }}
+                          <span class="input-group-btn">
+                              <button class="btn btn-info btn-lg" type="submit">
+                                  <i class="glyphicon glyphicon-search"></i>
+                              </button>
+                          </span>
+                      </div>
+                    </form>
+                </div>
+                </div>
+                <div class="intro-heading"></div>
+                <form method="post"  enctype="multipart/form-data" class="btn btn-primary">{% csrf_token %} 
+                    <div class="input-group">
+                        <label>
+                            <input type="file" name="myfile">
+                        </label>
+                        <button type="submit" style="background-color:green;" class="btn btn-info btn-lg">Upload</button>  
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header> -->
+
+
+    
+    <!-- result Section -->
+    <section id="result" class="bg-light-gray">
+        <div class="container">
+            <div class="container" style="border-radius: 20px; background-color: white;">
+            <center><h1>{{company}}</h1></center>
+            <center><h3>Propensity Score : {{score}}</h3></center>
+            <!-- <center><h4>{{flag}}</h4></center> -->
+            <div class="panel panel-default">
+                <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td><b>Field</b></td>
+                        <td><b>Value</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for l in li %}
+                    <tr>
+                        <td>{{l.0}}</td>
+                        <td>{{l.1}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                </table>   
+            </div>
+
+            <br>
+            <br>
+            <h5>References:</h5>
+            <hr style="border-color: black; padding: 5px; margin: 0px;">
+            <ul>
+                {% for u in urls %}
+                    <li>
+                        <a href="{{u}}">{{u}}</a>
+                    </li> 
+                {% endfor %}
+            </ul>
+        </div>      
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <!-- <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Contact Us</h2>
+                    <h3 class="section-subheading text-muted">Pune, Maharashtra, India  </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                        
+                </div>
+            </div>
+        </div>
+    </section>
+ -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div >
+                    <span class="copyright">Copyright &copy; 2017 Codestellation</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- jQuery -->
+
+
+    
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+    <script src="{% static 'js/contact_me.js' %}"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'js/agency.min.js' %}"></script>
+
+</body>
+
+</html>
