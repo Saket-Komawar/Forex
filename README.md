@@ -20,6 +20,8 @@ The documentation available as of the date of this release can be found over her
 ## Snapshots
 
 ###Homepage
+![Homepage](./home-page.png?raw=true "home-page.png")
+
 
 ## Authors
 
