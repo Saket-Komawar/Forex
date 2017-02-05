@@ -22,16 +22,18 @@ The documentation available as of the date of this release can be found over her
 ###Homepage
 ![Homepage](./home-page.png?raw=true "home-page.png")
 
+###Resultpage
+![Resultpage](./result-info.png?raw=true "result-info.png")
 
 ## Authors
 
-* [Ashish Kulkarni](https://github.com/coolashish/) 
-* [Saket Komavar](https://github.com/Saket-Komawar/) 
-* [Shubham Shah](https://github.com/SHUB1SHAH/) 
+* [Ashish Kulkarni](https://github.com/coowashish/) - kulkarniashish88@gmail.com
+* [Saket Komawar](https://github.com/Saket-Komawar/) - saketkomawar95@gmail.com
+* [Shubham Shah](https://github.com/SHUB1SHAH/) - shubhamshah970@gmail.com
 
 ## License
 
-This project is licensed under the --- License - see the [LICENSE.md](LICENSE.md) file
+This project is licensed under the Apache License - see the [LICENSE](https://github.com/Saket-Komawar/Forex/blob/master/LICENSE) file
 
 ## Acknowledgments
 
